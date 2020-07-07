@@ -7,10 +7,6 @@ class NewsFeed extends PureComponent {
     return (
       <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
         <Text>NewsFeed Screen</Text>
-        <Button
-          title="Go to Details"
-          onPress={() => navigation.navigate('Home')}
-        />
       </View>
     );
   }
