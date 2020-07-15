@@ -14,12 +14,27 @@ const Tab = createBottomTabNavigator();
 
 function HomeStackScreen() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Chat" component={ChatScreen} />
-      <HomeStack.Screen name="Home" component={HomeScreen} />
-      <HomeStack.Screen name="News" component={newsFeedScreen} />
-      <HomeStack.Screen name="newfeed" component={newsFeedScreen} />
-      <HomeStack.Screen name="login" component={LoginScreen} />
+    <HomeStack.Navigator initialRouteName="Home">
+      <HomeStack.Screen
+        name="Home"
+        component={HomeScreen}
+        // options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="Chat"
+        component={ChatScreen}
+        // options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="Newfeed"
+        component={newsFeedScreen}
+        // options={{headerShown: false}}
+      />
+      <HomeStack.Screen
+        name="login"
+        component={LoginScreen}
+        // options={{headerShown: false}}
+      />
     </HomeStack.Navigator>
   );
 }
@@ -35,7 +50,7 @@ function HomeTabScreen() {
             iconName = 'stepforward';
           } else if (route.name === 'login') {
             iconName = 'windowso';
-          } else if (route.name === 'newfeed') {
+          } else if (route.name === 'Newfeed') {
             iconName = 'tag';
           }
 
@@ -49,7 +64,7 @@ function HomeTabScreen() {
       }}>
       <Tab.Screen name="HomeAll" component={HomeStackScreen} />
       <Tab.Screen name="login" component={LoginScreen} />
-      <Tab.Screen name="newfeed" component={newsFeedScreen} />
+      <Tab.Screen name="Newfeed" component={newsFeedScreen} />
     </Tab.Navigator>
   );
 }
@@ -57,7 +72,11 @@ function HomeTabScreen() {
 function App() {
   return (
     <NavigationContainer>
-      <HomeStack.Navigator initialRouteName="Botton-tabbar">
+      <HomeStack.Navigator
+        initialRouteName="Botton-tabbar"
+        screenOptions={{
+          headerShown: false,
+        }}>
         <HomeStack.Screen name="Botton-tabbar" component={HomeTabScreen} />
       </HomeStack.Navigator>
     </NavigationContainer>

@@ -9,7 +9,7 @@ class Chat extends PureComponent {
         <Text>Chat Screen</Text>
         <Button
           title="Go to newfeed"
-          onPress={() => navigation.navigate('News')}
+          onPress={() => navigation.navigate('login')}
         />
       </View>
     );

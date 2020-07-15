@@ -24,7 +24,7 @@ class Login extends PureComponent {
   onLogin = () => {
     const {username} = this.state;
     const {navigation} = this.props;
-    navigation.navigate('Home', {username});
+    navigation.navigate('Newfeed', {username});
   };
 
   render() {
