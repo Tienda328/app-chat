@@ -1,12 +1,5 @@
 import React, {PureComponent} from 'react';
-import {
-  TextInput,
-  Image,
-  View,
-  Text,
-  TouchableOpacity,
-  ToastAndroid,
-} from 'react-native';
+import {TextInput, Image, View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
 class Login extends PureComponent {
@@ -31,34 +24,7 @@ class Login extends PureComponent {
   onLogin = () => {
     const {username} = this.state;
     const {navigation} = this.props;
-    // if (password !== 'matkhau') {
-    //   ToastAndroid.showWithGravityAndOffset(
-    //     'Mật khẩu không chính xác',
-    //     ToastAndroid.LONG,
-    //     ToastAndroid.CENTER,
-    //     15,
-    //     50,
-    //   );
-    // } else if (username !== 'Ten') {
-    //   ToastAndroid.showWithGravityAndOffset(
-    //     'Tên đăng nhập chứa kí tự đặc biệt',
-    //     ToastAndroid.LONG,
-    //     ToastAndroid.CENTER,
-    //     15,
-    //     50,
-    //   );
-    // } else if (username && password === null) {
-    //   ToastAndroid.showWithGravityAndOffset(
-    //     'mời bạn nhập tài khoản và mật khẩu',
-    //     ToastAndroid.LONG,
-    //     ToastAndroid.CENTER,
-    //     15,
-    //     50,
-    //   );
-    // } else {
-    //   navigation.navigate('Home');
-    // }
-    navigation.navigate('Homenew', {username});
+    navigation.navigate('Home', {username});
   };
 
   render() {

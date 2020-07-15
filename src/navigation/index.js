@@ -6,7 +6,7 @@ import HomeScreen from '../screen/home';
 import ChatScreen from '../screen/chat';
 import newsFeedScreen from '../screen/newfeed';
 import LoginScreen from '../screen/login/login';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const HomeStack = createStackNavigator();
 
@@ -19,15 +19,7 @@ function HomeStackScreen() {
       <HomeStack.Screen name="Home" component={HomeScreen} />
       <HomeStack.Screen name="News" component={newsFeedScreen} />
       <HomeStack.Screen name="newfeed" component={newsFeedScreen} />
-    </HomeStack.Navigator>
-  );
-}
-
-function LoginStackScreen() {
-  return (
-    <HomeStack.Navigator>
       <HomeStack.Screen name="login" component={LoginScreen} />
-      <HomeStack.Screen name="Homenew" component={HomeScreen} />
     </HomeStack.Navigator>
   );
 }
@@ -40,15 +32,15 @@ function HomeTabScreen() {
           let iconName;
 
           if (route.name === 'HomeAll') {
-            iconName = 'ios-information-circle';
+            iconName = 'stepforward';
           } else if (route.name === 'login') {
-            iconName = 'ios-list';
+            iconName = 'windowso';
           } else if (route.name === 'newfeed') {
-            iconName = 'ios-list-box';
+            iconName = 'tag';
           }
 
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <AntDesign name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{
@@ -56,7 +48,7 @@ function HomeTabScreen() {
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="HomeAll" component={HomeStackScreen} />
-      <Tab.Screen name="login" component={LoginStackScreen} />
+      <Tab.Screen name="login" component={LoginScreen} />
       <Tab.Screen name="newfeed" component={newsFeedScreen} />
     </Tab.Navigator>
   );
@@ -67,10 +59,6 @@ function App() {
     <NavigationContainer>
       <HomeStack.Navigator initialRouteName="Botton-tabbar">
         <HomeStack.Screen name="Botton-tabbar" component={HomeTabScreen} />
-        {/* <HomeStack.Screen name="Login" component={LoginScreen} />
-        {/* <Tab.Screen name="Home" component={HomeScreen} /> */}
-        {/* <HomeStack.Screen name="Chat" component={ChatScreen} />
-        <HomeStack.Screen name="News" component={newsFeedScreen} /> */}
       </HomeStack.Navigator>
     </NavigationContainer>
   );
