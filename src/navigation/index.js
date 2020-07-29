@@ -6,6 +6,7 @@ import HomeScreen from '../screen/home';
 import ChatScreen from '../screen/chat';
 import newsFeedScreen from '../screen/newfeed';
 import LoginScreen from '../screen/login/login';
+import IndexLogin from '../screen/login/index';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 
 const HomeStack = createStackNavigator();
@@ -63,7 +64,7 @@ function HomeTabScreen() {
         inactiveTintColor: 'gray',
       }}>
       <Tab.Screen name="HomeAll" component={HomeStackScreen} />
-      <Tab.Screen name="login" component={LoginScreen} />
+      <Tab.Screen name="login" component={IndexLogin} />
       <Tab.Screen name="Newfeed" component={newsFeedScreen} />
     </Tab.Navigator>
   );
@@ -73,7 +74,7 @@ function App() {
   return (
     <NavigationContainer>
       <HomeStack.Navigator
-        initialRouteName="Botton-tabbar"
+        initialRouteName="IndexLogin"
         screenOptions={{
           headerShown: false,
         }}>

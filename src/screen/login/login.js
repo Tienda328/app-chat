@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react';
+import firebase from 'firebase';
 import {TextInput, Image, View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 
@@ -6,18 +7,39 @@ class Login extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
+      error: '',
+      loading: false,
       password: '',
     };
   }
 
-  onChangeTextUserame = (username) => {
-    this.setState({username});
+  onChangeTextUserame = (email) => {
+    this.setState({email});
   };
 
   onChangeTextPassWord = (value) => {
     this.setState({
       password: value,
+    });
+  };
+
+  onBottomPress = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(this.onLoginSuccess)
+      .catch((err) => {
+        this.setState({
+          error: err.message,
+        });
+      });
+  };
+
+  onLoginSuccess = () => {
+    this.setState({
+      error: '',
+      loading: false,
     });
   };
 
@@ -28,7 +50,7 @@ class Login extends PureComponent {
   };
 
   render() {
-    const {username, password} = this.state;
+    const {email, password, error} = this.state;
     return (
       <View style={styles.containter}>
         <View style={styles.containerImg}>
@@ -46,7 +68,7 @@ class Login extends PureComponent {
             <TextInput
               onChangeText={this.onChangeTextUserame}
               style={styles.textInput}
-              value={username}
+              value={email}
               placeholder="john Doe"
             />
           </View>
@@ -60,8 +82,13 @@ class Login extends PureComponent {
               placeholder="**********"
             />
           </View>
-          <TouchableOpacity style={styles.buttun} onPress={this.onLogin}>
-            <Text style={styles.txtButtun}>Đăng nhập</Text>
+
+          <TouchableOpacity style={styles.buttun} onPress={this.onBottomPress}>
+            <Text style={styles.txtButtun}>Login</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity>
+            <Text style={{fontSize: 35, color: 'red'}}>{error}</Text>
           </TouchableOpacity>
         </View>
       </View>
